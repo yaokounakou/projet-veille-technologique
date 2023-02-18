@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 
 function Login() {
+  // setIsRegistered(false);
   const videoRef = useRef(null);
   const photoRef = useRef(null);
   const imageRef = useRef(null);
