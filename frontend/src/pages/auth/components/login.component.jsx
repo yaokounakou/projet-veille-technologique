@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 function Login() {
   const videoRef = useRef(null);
   const photoRef = useRef(null);
+  const imageRef = useRef(null);
 
   const [hasPhoto, setHasPhoto] = useState(false);
 
@@ -13,12 +14,36 @@ function Login() {
         let video = videoRef.current;
         video.srcObject = stream;
         video.style.transform = "scaleX(-1)";
-        setVideo(video);
+        // setVideo(video);
         video.play();
       })
       .catch((err) => {
         console.error("error:", err);
       });
+  };
+
+  const takePhoto = () => {
+    let video = videoRef.current;
+    let canvas = photoRef.current;
+    let image = imageRef.current;
+
+    let context = canvas.getContext("2d");
+
+    let width = video.videoWidth;
+    let height = video.videoHeight;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    context.translate(width, 0);
+    context.scale(-1, 1);
+    context.drawImage(video, 0, 0, width, height);
+
+    let data = canvas.toDataURL();
+
+    image.src = data;
+
+    setHasPhoto(true);
   };
 
   useEffect(() => {
@@ -28,7 +53,7 @@ function Login() {
   return (
     <div className="flex h-screen w-full items-center justify-center p-16">
       <div className="flex w-full flex-col items-center justify-center space-y-4">
-        <div className="flex h-96 w-full items-center justify-center overflow-hidden rounded-md bg-gray-500">
+        <div className="relative flex h-96 w-full items-center justify-center overflow-hidden rounded-md bg-gray-500">
           <video
             ref={videoRef}
             className={
@@ -40,10 +65,26 @@ function Login() {
           />
           <canvas
             ref={photoRef}
-            className={hasPhoto ? "flex h-full w-full object-cover" : "hidden"}
+            onLoad={() => {
+              console.log("canvas loaded");
+            }}
+            className={hasPhoto ? "hidden" : "hidden"}
           ></canvas>
+          <img
+            ref={imageRef}
+            src=""
+            alt=""
+            className={
+              hasPhoto
+                ? "flex h-96 w-full object-cover transition-all delay-500 duration-500 ease-in-out"
+                : "hidden"
+            }
+          />
         </div>
-        <button className="w-full rounded-md bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800">
+        <button
+          onClick={takePhoto}
+          className="w-full rounded-md bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800"
+        >
           Authentificate
         </button>
       </div>
