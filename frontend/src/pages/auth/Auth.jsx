@@ -4,7 +4,10 @@ import * as faceapi from "face-api.js";
 
 import { useNavigate } from "react-router-dom";
 
+import { useGlobalContext } from "../../UnContexte";
+
 function Auth() {
+  const { id, setId } = useGlobalContext();
   //Step 1 ========================================================================================
   const navigation = useNavigate();
 
@@ -128,6 +131,7 @@ function Auth() {
           setIdentifiedUserName(
             formattedUsers[result.toString().split(" ")[0]]
           );
+          setId(result.toString().split(" ")[0]);
           stopVideo();
           clearInterval(intervalFace);
         } else {
