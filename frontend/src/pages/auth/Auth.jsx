@@ -4,16 +4,16 @@ import * as faceapi from "face-api.js";
 
 import { useNavigate } from "react-router-dom";
 
-import { useGlobalContext } from "../../UnContexte";
+import { useGlobalContext } from "../../context/UnContexte";
 
 function Auth() {
   const { id, setId } = useGlobalContext();
 
-  useEffect(() => {
-    if(id !== null) {
-      navigation("/dashboard");
-    }
-  }, [id])
+  // useEffect(() => {
+  //   if(id !== null) {
+  //     navigation("/dashboard");
+  //   }
+  // }, [id])
   //Step 1 ========================================================================================
   const navigation = useNavigate();
 
@@ -307,18 +307,18 @@ function Auth() {
   };
 
   return (
-    <div className="flex h-screen w-full items-center justify-center p-16">
+    <div className="flex max-h-screen w-full items-center justify-center p-20 md:p-60">
       {step === 1 && (
-        <div className="flex w-full flex-col items-center justify-center space-y-4">
-          {identifiedUserName && <h1 id="nameh1">{identifiedUserName}</h1>}
+        <div className="flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg">
+          {identifiedUserName && (
+            <h1 id="nameh1">Welcome back {identifiedUserName}!</h1>
+          )}
           {!unknown && !identifiedUserName && (
-            <div className="relative flex h-96 w-full items-center justify-center overflow-hidden rounded-md bg-gray-500">
+            <div className="relative flex h-96 w-full items-center justify-center overflow-hidden bg-gray-500 md:h-full">
               <video
                 ref={videoRef}
                 className={
-                  hasPhoto
-                    ? "hidden"
-                    : "flex h-full w-full rounded-md object-cover"
+                  hasPhoto ? "hidden" : "flex h-full w-full object-cover"
                 }
                 autoPlay
                 muted
@@ -338,7 +338,7 @@ function Auth() {
                 id="img"
                 className={
                   hasPhoto
-                    ? "flex h-96 w-full object-cover transition-all delay-500 duration-500 ease-in-out"
+                    ? "flex h-96 w-full object-cover transition-all delay-500 duration-500 ease-in-out md:h-full"
                     : "hidden"
                 }
                 onLoad={handleImageOnLoad}
@@ -348,7 +348,7 @@ function Auth() {
           {!unknown && !identifiedUserName && (
             <button
               onClick={takePhoto}
-              className="w-full rounded-md bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800"
+              className="w-full bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800 md:p-8 md:text-2xl"
             >
               Authentificate
             </button>
@@ -363,21 +363,21 @@ function Auth() {
               />
               <button
                 onClick={nextStep}
-                className="w-full rounded-md bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800"
+                className="w-full bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800 md:p-8 md:text-2xl"
               >
                 Suivant
               </button>
               <h4 className="text-lg text-gray-400">
-                Inscrivez-vous en liant votre nom et visage dès maintenant.
+                Sign up by using your name and a photo of your face
               </h4>
             </div>
           )}
           {!unknown && identifiedUserName && (
             <button
               onClick={() => navigation("/dashboard")}
-              className="w-full rounded-md bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800"
+              className="w-full bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800 md:p-8 md:text-2xl"
             >
-              Aller au tableau de bord
+              Go to your dashboard
             </button>
           )}
         </div>
@@ -385,7 +385,6 @@ function Auth() {
       {step === 2 && (
         <div className="flex w-full flex-col items-center justify-center space-y-4">
           <h1 id="nameh1">Inscription</h1>
-          <h1> for user: {username}</h1>
           <div className="relative flex h-96 w-full items-center justify-center overflow-hidden rounded-md bg-gray-500">
             <video
               ref={videoRef}
@@ -418,12 +417,6 @@ function Auth() {
               onLoad={handleImageInscriptionOnLoad}
             />
           </div>
-          <button
-            onClick={takePhoto}
-            className="w-full rounded-md bg-blue-500 p-4 font-semibold text-white hover:bg-blue-600 active:bg-blue-800"
-          >
-            Take photo
-          </button>
         </div>
       )}
     </div>

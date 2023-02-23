@@ -1,5 +1,11 @@
+// get all events
 
-//delete event
+curl --request GET \
+  --url https://guestgo.herokuapp.com/event
+
+  // get event by id
+
+###
 
 curl --request DELETE \
   --url https://guestgo.herokuapp.com/event \

@@ -5,13 +5,11 @@ import Auth from "./pages/auth/Auth";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/dashboard/Dashboard";
 import EventVerification from "./pages/verification/EventVerification";
-import { UnContexte, DeuxContexte } from "./UnContexte";
+import { UnContexte } from "./context/UnContexte";
 import React, { useState, useEffect } from "react";
 
 function App() {
-  //  const [id, setId] = useState(sessionStorage.getItem("id") || undefined);
-  const [id, setId] = useState("63dd5c74f5b9340485eb89f3");
-
+  const [id, setId] = useState(sessionStorage.getItem("id") || undefined);
   const [eventid, setEventId] = useState("");
 
   useEffect(() => {
@@ -25,19 +23,19 @@ function App() {
     }
   }, [id]);
 
-
   return (
     <Router>
       <UnContexte.Provider value={{ id, setId }}>
-      <DeuxContexte.Provider value={{ eventid, setEventId }}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/verification/:eventId?" element={<EventVerification />} />
-      </Routes>
-      </DeuxContexte.Provider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/verification/:eventId?"
+            element={<EventVerification />}
+          />
+        </Routes>
       </UnContexte.Provider>
     </Router>
   );

@@ -54,7 +54,7 @@ function Login() {
   return (
     <div className="flex h-screen w-full items-center justify-center p-16">
       <div className="flex w-full flex-col items-center justify-center space-y-4">
-        <div className="relative flex h-96 w-full items-center justify-center overflow-hidden rounded-md bg-gray-500">
+        <div className="relative flex h-96 w-full items-center justify-center overflow-hidden rounded-md bg-gray-500 md:h-full">
           <video
             ref={videoRef}
             className={
