@@ -1,0 +1,32 @@
+//get user's events
+
+curl --request GET \
+  --url https://guestgo.herokuapp.com/event/getEvents/63dd5c74f5b9340485eb89f3
+
+
+################################
+
+
+#get all users
+
+curl --request GET \
+  --url https://guestgo.herokuapp.com/user
+
+
+################################
+
+
+#get user by id
+
+curl --request GET \
+  --url https://guestgo.herokuapp.com/user/63dd5c74f5b9340485eb89f3
+
+
+################################
+
+# create user
+
+curl --request POST \
+  --url https://guestgo.herokuapp.com/user \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data username=test

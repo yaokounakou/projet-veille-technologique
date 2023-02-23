@@ -6,3 +6,11 @@ export const UnContexte = React.createContext({
 });
 
 export const useGlobalContext = () => React.useContext(UnContexte);
+
+
+export const DeuxContexte = React.createContext({
+    eventid: "",
+    setEventid: () => {},
+});
+
+export const useGlobalContext2 = () => React.useContext(DeuxContexte);

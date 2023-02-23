@@ -284,8 +284,17 @@ function Auth() {
           .then((response) => {
             console.log(response);
             if (response.status === 201) {
-              setId(result["user created"].user.id);
-              navigation("/dashboard")
+              console.log("one photo added successfully")
+              fetch(url, options).then((response) => {
+                console.log(response);
+                if (response.status === 201) {
+                  console.log("two photos added successfully")
+                  setId(result["user created"].user.id);
+                  navigation("/dashboard")
+                }
+              }).catch((error) => {
+                console.log(error);
+              });
             }
           })
           .catch((error) => {
