@@ -19,27 +19,23 @@ export default function Dashboard() {
     }, [id]);
 
 
-    async function createEvent() {
+    async function GetEventUsers() {
         //
     }
 
-    async function deleteEvent() {
+    async function GetUserEvents() {
         //
     }
 
-    async function getEvents() {
+    async function CreateEvent() {
         //
     }
 
-    async function getRoles() {
+    async function DeleteEvent() {
         //
     }
 
-    async function changeRoles() {
-        //
-    }
-
-    async function getListOfUsersInEvents() {
+    async function UpdateEvent() {
         //
     }
 
@@ -47,9 +43,17 @@ export default function Dashboard() {
         //
     }
 
+    async function ChangeRole() {
+        //
+    }
+
+    async function RemoveUserFromEvent() {
+        //
+    }
+
     return (
         <div>
-            <h1>Dashboard id: {id}</h1>
+            <h1>Dashboard idd: {id}</h1>
         </div>
     )
 }
