@@ -6,7 +6,11 @@ import { useGlobalContext } from "../../context/UnContexte";
 import { Event } from "./components";
 import { API_URL } from "../../contants/index";
 
+import { useNavigate } from "react-router";
+
 const Dashboard = () => {
+
+    const navigation = useNavigate();
   const { id, setId } = useGlobalContext();
   const nbEvents = 1;
 
@@ -20,7 +24,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     console.log("id", id);
-    if (!id || id === "") {
+    if (id || id !== "") {
       navigation("/auth");
     }
   }, [id]);

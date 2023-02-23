@@ -8,12 +8,6 @@ import { useGlobalContext } from "../../context/UnContexte";
 
 function Auth() {
   const { id, setId } = useGlobalContext();
-
-  // useEffect(() => {
-  //   if(id !== null) {
-  //     navigation("/dashboard");
-  //   }
-  // }, [id])
   //Step 1 ========================================================================================
   const navigation = useNavigate();
 
