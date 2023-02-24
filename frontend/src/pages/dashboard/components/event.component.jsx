@@ -12,9 +12,9 @@ const Event = ({ event }) => {
                 {event.name}
               </h1>
             </div>
-            <div className="col-span-4 flex h-full w-full items-center justify-center bg-red-300 md:col-span-2">
+            {/* <div className="col-span-4 flex h-full w-full items-center justify-center bg-red-300 md:col-span-2">
               <span>Role</span>
-            </div>
+            </div> */}
           </div>
           <div className="flex w-full">
             <div className="flex items-center justify-center">

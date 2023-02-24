@@ -1,3 +1,4 @@
 import Event from "./event.component";
+import MyEvents from "./myevents.component";
 
-export { Event };
+export { Event, MyEvents };

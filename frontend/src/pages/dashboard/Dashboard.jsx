@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import { useGlobalContext } from "../../context/UnContexte";
-import { Event } from "./components";
+import { Event, MyEvents } from "./components";
 import { API_URL } from "../../contants/index";
 
 import { useNavigate } from "react-router";
@@ -21,12 +21,15 @@ const Dashboard = () => {
 
   const [events, setEvents] = useState([]);
 
-  // useEffect(() => {
-  //   console.log("id", id);
-  //   if (id || id !== "") {
-  //     navigation("/auth");
-  //   }
-  // }, [id]);
+  const [myEvents, setMyEvents] = useState([]);
+
+  const [allEvents, setAllEvents] = useState(true);
+
+  useEffect(() => {
+    if (!id || id === "") {
+      navigation("/auth");
+    }
+  }, [id]);
 
   async function getUser(id) {
     if (id === undefined) {
@@ -58,6 +61,25 @@ const Dashboard = () => {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  async function getUsersEvents(id) {
+    if (id === undefined) {
+      return;
+    } else {
+      console.log("id", id);
+      fetch(`${API_URL}/event/getEvents/${id}`, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setMyEvents(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   async function createEvent() {
@@ -92,6 +114,10 @@ const Dashboard = () => {
     getAllEvents();
   }, []);
 
+  useEffect(() => {
+    getUsersEvents(id);
+  }, [id]);
+
   return (
     <div className="flex max-h-screen w-full items-start justify-center">
       <div className="grid w-full md:min-h-screen md:grid-cols-12">
@@ -110,9 +136,26 @@ const Dashboard = () => {
             <h1 className="mb-4 text-2xl font-extrabold text-blue-800 md:mb-6 md:text-5xl">
               Dashboard
             </h1>
+            <div className="flex w-full jutify-center items-center gap-1">
+                  <button className="w-64 bg-blue-500 p-2 font-semibold text-white hover:bg-blue-600 active:bg-blue-800 md:p-8 md:text-2xl"
+                  onClick = {() => setAllEvents(true)}
+                  >
+                    All
+                  </button>
+                  <button className="w-64 bg-blue-500 p-2 font-semibold text-white hover:bg-blue-600 active:bg-blue-800 md:p-8 md:text-2xl"
+                  onClick={() => setAllEvents(false)}
+                  >
+                    My Events
+                  </button>
+            </div>
             <div className="grid w-full grid-cols-1 gap-6 overflow-scroll rounded-md">
-              {events.map((event) => (
+              {allEvents &&
+              events.map((event) => (
                 <Event key={event.id} event={event} />
+              ))}
+              {!allEvents &&
+              myEvents.map((event) => (
+                <MyEvents key={event.event.id} event={event.event} />
               ))}
             </div>
           </div>
