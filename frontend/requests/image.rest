@@ -1,0 +1,14 @@
+//get image by userId
+
+curl --request GET \
+  --url https://guestgo.herokuapp.com/user/picture/63e074467bdedc9f312e922c/1
+
+
+################################
+
+#add image to user
+
+# curl --request POST \
+#   --url https://guestgo.herokuapp.com/user/picture/63f6b90e4385654181d758ee \
+#   --header 'Content-Type: multipart/form-data' \
+#   --form 'img.png'

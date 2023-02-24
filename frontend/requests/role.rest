@@ -1,0 +1,32 @@
+//change role of user: Participant
+
+curl --request PUT \
+  --url https://guestgo.herokuapp.com/event/changeRole \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data userId=63dd5c7df5b9340485eb89f5 \
+  --data eventId=63f308dbc9c4cfa6bcd31393 \
+  --data roleName=Participant
+
+
+###
+
+# change role of user: Garde
+
+curl --request PUT \
+  --url https://guestgo.herokuapp.com/event/changeRole \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data userId=63dd5c7df5b9340485eb89f5 \
+  --data eventId=63f308dbc9c4cfa6bcd31393 \
+  --data roleName=Garde
+
+
+###
+
+# change role of user: Organisateur
+
+curl --request PUT \
+  --url https://guestgo.herokuapp.com/event/changeRole \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data userId=63dd5c7df5b9340485eb89f5 \
+  --data eventId=63f308dbc9c4cfa6bcd31393 \
+  --data roleName=Organisateur

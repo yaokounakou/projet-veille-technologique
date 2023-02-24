@@ -1,0 +1,42 @@
+// get all events
+curl --request GET \
+  --url https://guestgo.herokuapp.com/event/
+###
+
+  // get event by id
+curl --request DELETE \
+  --url https://guestgo.herokuapp.com/event \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data userId=63dd5c74f5b9340485eb89f3 \
+  --data eventId=63f3079eb75b7a81cea6ee72
+###
+
+//create event
+curl --request POST \
+  --url https://guestgo.herokuapp.com/event \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data name=test \
+  --data description=test \
+  --data location=test
+###
+
+# get event's users
+curl --request GET \
+  --url https://guestgo.herokuapp.com/event/getUsers/63f308dbc9c4cfa6bcd31393
+###
+
+//add user to event
+
+curl --request POST \
+  --url https://guestgo.herokuapp.com/event/addUserToEvent \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data userId=63dd5c7df5b9340485eb89f5 \
+  --data eventId=63f308dbc9c4cfa6bcd31393
+###
+
+//delete user from event
+curl --request DELETE \
+  --url https://guestgo.herokuapp.com/event/removeUserFromEvent \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data userId=63e074467bdedc9f312e922c \
+  --data eventId=63f2f65f95b5a005e5b1c015
