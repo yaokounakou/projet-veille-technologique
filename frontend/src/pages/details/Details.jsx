@@ -39,7 +39,11 @@ const Details = () => {
     if (id && users) {
       users.forEach((user) => {
         console.log(user.user);
-        if (user.user.id === id) {
+        console.log(id);
+        if (
+          user.user.id === id &&
+          (user.user.role === "Organisateur" || user.user.role === "Guarde")
+        ) {
           setIsOrganizer(true);
         }
       });

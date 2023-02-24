@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import * as faceapi from "face-api.js";
 
-
 const Verification = ({ eventId }) => {
   const [video, setVideo] = useState(null);
 
@@ -125,8 +124,8 @@ const Verification = ({ eventId }) => {
     console.log("loaded");
     console.log("start video");
     navigator.mediaDevices
-      //   .getUserMedia({ video: { facingMode: "environment" } })
-      .getUserMedia({ video: { facingMode: "user" } })
+      .getUserMedia({ video: { facingMode: "environment" } })
+      // .getUserMedia({ video: { facingMode: "user" } })
       .then((stream) => {
         let video = videoRef.current;
         video.srcObject = stream;
@@ -206,7 +205,7 @@ const Verification = ({ eventId }) => {
               drawBox.draw(canvas);
               const nameh1 = document.getElementById("nameh1");
               nameh1.innerHTML = user.user.username + " " + "☑";
-              video.style.border = "5px solid green"
+              video.style.border = "5px solid green";
               clearInterval(intervalFace);
               video.pause();
               video.srcObject.getTracks().forEach((track) => {
