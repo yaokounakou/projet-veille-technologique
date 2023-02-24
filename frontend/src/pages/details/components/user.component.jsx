@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
-import { IoLocationSharp } from "react-icons/io5";
+import { GrUser } from "react-icons/gr";
 
 const User = ({ user }) => {
   return (
-    <div>
-      <br></br>
-      <p>Name: {user.username}</p>
-      <p>Role: {user.role}</p>
+    <div className="w-full rounded-lg bg-white p-4">
+      <p>Nom: {user.username}</p>
+      <p>Rôle: {user.role}</p>
       <p>Id: {user.id}</p>
     </div>
   );

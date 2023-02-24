@@ -31,7 +31,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/details/:id?" element={<Details />} />
+          <Route path="/details/:eventId?" element={<Details />} />
           <Route
             path="/verification/:eventId?"
             element={<EventVerification />}
