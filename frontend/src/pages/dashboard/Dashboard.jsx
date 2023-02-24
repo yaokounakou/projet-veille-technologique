@@ -21,12 +21,12 @@ const Dashboard = () => {
 
   const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    console.log("id", id);
-    if (id || id !== "") {
-      navigation("/auth");
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   console.log("id", id);
+  //   if (id || id !== "") {
+  //     navigation("/auth");
+  //   }
+  // }, [id]);
 
   async function getUser(id) {
     if (id === undefined) {

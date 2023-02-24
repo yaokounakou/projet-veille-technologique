@@ -111,7 +111,7 @@ const Verification = ({ eventId }) => {
               fetch("https://guestgo.herokuapp.com/event/getUsers/" + eventId)
                 .then((res) => res.json())
                 .then((data) => {
-                  setEventUsers(data);
+                  setEventUsers(data.users);
                 })
             ),
           2000
@@ -206,6 +206,7 @@ const Verification = ({ eventId }) => {
               drawBox.draw(canvas);
               const nameh1 = document.getElementById("nameh1");
               nameh1.innerHTML = user.user.username + " " + "☑";
+              video.style.border = "5px solid green"
               clearInterval(intervalFace);
               video.pause();
               video.srcObject.getTracks().forEach((track) => {

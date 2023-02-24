@@ -13,7 +13,7 @@ const Details = () => {
       return;
     } else {
       console.log("id", id);
-      fetch(`${LOCAL_URL}/event/getUsers/${id}`, {
+      fetch(`${API_URL}/event/getUsers/${id}`, {
         method: "GET",
       })
         .then((res) => res.json())

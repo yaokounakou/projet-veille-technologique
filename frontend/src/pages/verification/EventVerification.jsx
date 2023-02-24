@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useParams, useNavigate } from "react-router-dom";
 
-import { useGlobalContext, useGlobalContext2 } from "../../UnContexte";
+import { useGlobalContext } from "../../context/UnContexte";
 
 import { Verification } from "./components";
 
@@ -17,29 +17,13 @@ export default function EventVerification() {
 
   const { eventId } = useParams();
 
-  const [video, setVideo] = useState(null);
-
-  const [captureVideo, setCaptureVideo] = useState(false);
-
-  const [nextButtonBool, setNextButtonBool] = useState(false);
-
-  const [users, setUsers] = useState([]);
-
-  const [eventUsers, setEventUsers] = useState([]);
-
-  const [formattedUsers, setFormattedUsers] = useState([]);
-
-  const videoRef = React.useRef();
-  const videoHeight = 800;
-  const videoWidth = 400;
-
   useEffect(() => {
     if (id || id !== "") {
       if (eventId || eventId !== "") {
         fetch("https://guestgo.herokuapp.com/event/getUsers/" + eventId)
           .then((res) => res.json())
           .then((data) => {
-            data.forEach((element) => {
+            data.users.forEach((element) => {
               if (id.toString() === element.user.id) {
                 if (
                   element.user.role === "Organisateur" ||

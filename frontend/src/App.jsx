@@ -6,7 +6,7 @@ import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Details from "./pages/details/Details";
 import EventVerification from "./pages/verification/EventVerification";
-import { UnContexte } from "./UnContexte";
+import { UnContexte } from "./context/UnContexte";
 import React, { useState, useEffect } from "react";
 
 function App() {
