@@ -9,8 +9,7 @@ import { API_URL } from "../../contants/index";
 import { useNavigate } from "react-router";
 
 const Dashboard = () => {
-
-    const navigation = useNavigate();
+  const navigation = useNavigate();
   const { id, setId } = useGlobalContext();
   const nbEvents = 1;
 
@@ -107,11 +106,11 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="h-[var(--dashboard-height)] bg-gradient-to-t from-blue-800 md:col-span-9 md:h-screen md:max-h-screen">
-          <div className="flex h-full w-full flex-col items-start justify-center p-6 md:p-8">
+          <div className="flex h-full w-full flex-col items-start justify-start p-6 md:p-8">
             <h1 className="mb-4 text-2xl font-extrabold text-blue-800 md:mb-6 md:text-5xl">
               Dashboard
             </h1>
-            <div className="grid h-full w-full grid-cols-1 gap-6 overflow-auto rounded-md bg-red-300">
+            <div className="grid w-full grid-cols-1 gap-6 overflow-scroll rounded-md">
               {events.map((event) => (
                 <Event key={event.id} event={event} />
               ))}
