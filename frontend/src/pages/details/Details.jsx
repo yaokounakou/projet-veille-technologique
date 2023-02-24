@@ -6,6 +6,7 @@ import { API_URL, LOCAL_URL } from "../../contants/index";
 const Details = () => {
   const { id } = useParams();
   const [users, setUsers] = useState(null)
+  const [event , setEvent] = useState(null)
 
   async function getEvent(id) {
     if (id === undefined) {
@@ -19,6 +20,7 @@ const Details = () => {
         .then((data) => {
           console.log(data);
           setUsers(data.users);
+          setEvent(data);
         })
         .catch((err) => {
           console.log(err);
@@ -33,7 +35,16 @@ const Details = () => {
   return (
     <div>
       <h1>Details</h1>
-      <p>{id}</p>
+      <br></br>
+      <p>Id: {id}</p>
+      <br></br>
+      <p>Name: {event && event.name}</p>
+      <br></br>
+      <p>Description: {event && event.description}</p>
+      <br></br>
+      <p>Location: {event && event.location}</p>
+      <br></br>
+
       {users &&
         users.map((user) => {
           return <User key={user.user.id} user={user.user} />;
