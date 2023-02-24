@@ -140,7 +140,7 @@ const Register = ({}) => {
 
   return (
     <div>
-      <h1 className="text-blue-500 text-2xl">Inscription</h1>
+      <h1 className="text-2xl text-blue-500">Inscription</h1>
       {step === 1 && (
         <div>
           <input
