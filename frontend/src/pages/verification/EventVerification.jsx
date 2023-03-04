@@ -43,9 +43,23 @@ export default function EventVerification() {
     }
   }, [id]);
 
-  return /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(
-    window.navigator.userAgent
-  ) === false ? (
+  // return /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(
+  //   window.navigator.userAgent
+  // ) === true ? (
+  //   <div className="flex h-screen w-full items-center justify-center p-16">
+  //     <div className="flex w-full flex-col items-center justify-center space-y-4">
+  //       {ValidationGardien && eventId && (
+  //         <Verification  eventId={eventId}/>
+  //       )}
+  //     </div>
+  //   </div>
+  // ) : (
+  //   // <Verification />
+  //   <h1>La vérification ne peut être effectuée que sur un appareil mobile.</h1>
+  // );
+
+
+  return (
     <div className="flex h-screen w-full items-center justify-center p-16">
       <div className="flex w-full flex-col items-center justify-center space-y-4">
         {ValidationGardien && eventId && (
@@ -53,8 +67,5 @@ export default function EventVerification() {
         )}
       </div>
     </div>
-  ) : (
-    // <Verification />
-    <h1>Verification peux juste etre sur le un mobile device</h1>
-  );
+    )
 }
