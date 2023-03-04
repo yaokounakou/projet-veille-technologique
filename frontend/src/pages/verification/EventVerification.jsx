@@ -45,7 +45,7 @@ export default function EventVerification() {
 
   return /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(
     window.navigator.userAgent
-  ) === true ? (
+  ) === false ? (
     <div className="flex h-screen w-full items-center justify-center p-16">
       <div className="flex w-full flex-col items-center justify-center space-y-4">
         {ValidationGardien && eventId && (
